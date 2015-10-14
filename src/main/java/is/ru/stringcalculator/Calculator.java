@@ -18,7 +18,7 @@ public class Calculator {
                 String delimiter = text.substring(2, delimiterEnds);
                 String numStr = text.substring(delimiterEnds+1);
 
-                return sum(splitNumbersBy(numStr, delimiter));
+                return sum(splitNumbers(numStr, delimiter));
             }
 
 			return sum(splitNumbers(text));
@@ -32,30 +32,15 @@ public class Calculator {
 		return Integer.parseInt(number);
 	}
 
-    private static String[] splitNumbersBy(String numbers, String delimiter)
+    private static String[] splitNumbers(String numbers, String delimiter)
     {
         return numbers.split(delimiter);
     }
 
 	private static String[] splitNumbers(String numbers)
 	{
-        ArrayList<String> allNumbers = new ArrayList<String>();
 
-        String[] splitByCommas = numbers.split(",");
-
-        for (String chunks : splitByCommas)
-        {
-            String[] splitBySpacesAndCommas = chunks.split("\n");
-
-            for (String number : splitBySpacesAndCommas)
-            {
-                allNumbers.add(number);
-            }
-        }
-
-        String[] result = allNumbers.toArray(new String[allNumbers.size()]);
-
-	    return result;
+        return numbers.split("[\n,]");
 	}
       
     private static int sum(String[] numbers)
