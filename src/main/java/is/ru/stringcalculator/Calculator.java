@@ -12,6 +12,15 @@ public class Calculator {
 		}
 		else if(text.contains(",") || text.contains("\n"))
 		{
+            if (text.indexOf("//") == 0)
+            {
+                int delimiterEnds = text.indexOf("\n");
+                String delimiter = text.substring(2, delimiterEnds);
+                String numStr = text.substring(delimiterEnds+1);
+
+                return sum(splitNumbersBy(numStr, delimiter));
+            }
+
 			return sum(splitNumbers(text));
 		}
 		
@@ -22,6 +31,11 @@ public class Calculator {
 	{
 		return Integer.parseInt(number);
 	}
+
+    private static String[] splitNumbersBy(String numbers, String delimiter)
+    {
+        return numbers.split(delimiter);
+    }
 
 	private static String[] splitNumbers(String numbers)
 	{
