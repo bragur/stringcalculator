@@ -37,6 +37,18 @@ public class CalculatorTest {
     @Test
     public void testFiveNumbers()
     {
-    	assertEquals(15, Calculator.add("1,2,3,4,5"));
+		assertEquals(15, Calculator.add("1,2,3,4,5"));
+    }
+
+    @Test
+    public void testSpaceDelimiter()
+    {
+        assertEquals(3, Calculator.add("1\n2"));
+    }
+
+    @Test
+    public void testSpaceAndCommaDelimiter()
+    {
+        assertEquals(6, Calculator.add("1\n2,3"));
     }
 }

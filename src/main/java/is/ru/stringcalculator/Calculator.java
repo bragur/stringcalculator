@@ -1,5 +1,7 @@
 package is.ru.stringcalculator;
 
+import java.util.ArrayList;
+
 public class Calculator {
 
 	public static int add(String text)
@@ -8,7 +10,7 @@ public class Calculator {
 		{
 			return 0;
 		}
-		else if(text.contains(","))
+		else if(text.contains(",") || text.contains("\n"))
 		{
 			return sum(splitNumbers(text));
 		}
@@ -23,7 +25,23 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers)
 	{
-	    return numbers.split(",");
+        ArrayList<String> allNumbers = new ArrayList<String>();
+
+        String[] splitByCommas = numbers.split(",");
+
+        for (String chunks : splitByCommas)
+        {
+            String[] splitBySpacesAndCommas = chunks.split("\n");
+
+            for (String number : splitBySpacesAndCommas)
+            {
+                allNumbers.add(number);
+            }
+        }
+
+        String[] result = allNumbers.toArray(new String[allNumbers.size()]);
+
+	    return result;
 	}
       
     private static int sum(String[] numbers)
