@@ -46,13 +46,23 @@ public class Calculator {
     private static int sum(String[] numbers)
     {
  	    int total = 0;
+        int pos = 0;
         for (String number : numbers)
         {
             if (toInt(number) < 0)
             {
-                throw new IndexOutOfBoundsException("Negatives not allowed: ");
+                String msg = "Negatives not allowed: ";
+                for (int n = pos; n < numbers.length; n++)
+                {
+                    if (toInt(numbers[n]) < 0)
+                    {
+                        msg = msg + numbers[n] + ",";
+                    }
+                }
+                throw new IllegalArgumentException(msg);
             }
 		    total += toInt(number);
+            pos++;
 		}
 		return total;
     }
