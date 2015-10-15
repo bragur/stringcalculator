@@ -12,11 +12,20 @@ public class Calculator {
 		}
 		else if(text.contains(",") || text.contains("\n"))
 		{
-            if (text.indexOf("//") == 0)
+            if (text.contains("//") && text.indexOf("//") == 0)
             {
-                int delimiterEnds = text.indexOf("\n");
-                String delimiter = text.substring(2, delimiterEnds);
-                String numStr = text.substring(delimiterEnds+1);
+                int delimiterEnds = 3;
+                int delimiterStarts = 2;
+
+                if(text.contains("[") && text.indexOf("[") == 2)
+                {
+                    delimiterStarts += 1;
+                    delimiterEnds = text.indexOf("\n") - 1;
+                }
+
+                String delimiter = text.substring(delimiterStarts, delimiterEnds);
+                
+                String numStr = text.substring(text.indexOf("\n") + 1);
 
                 return sum(splitNumbers(numStr, delimiter));
             }

@@ -67,7 +67,13 @@ public class CalculatorTest {
     @Test
     public void testChooseDelimiterAlt()
     {
-        assertEquals(6, Calculator.add("//;;\n1;;2;;3"));
+        assertEquals(6, Calculator.add("//[;;]\n1;;2;;3"));
+    }
+
+    @Test
+    public void testChooseDelimiterAlt2()
+    {
+        assertEquals(6, Calculator.add("//[ppp]\n1ppp2ppp3"));
     }
 
     @Test(expected=IllegalArgumentException.class)
