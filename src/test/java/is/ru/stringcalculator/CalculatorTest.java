@@ -75,4 +75,16 @@ public class CalculatorTest {
     {
         assertEquals(0, Calculator.add("-6,6"));
     }
+
+    @Test
+    public void testBiggerThanThousand()
+    {
+        assertEquals(2, Calculator.add("1001,2"));
+    }
+
+    @Test
+    public void testThousand()
+    {
+        assertEquals(1002, Calculator.add("1000,2"));
+    }
 }

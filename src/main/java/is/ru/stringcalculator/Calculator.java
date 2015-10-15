@@ -47,9 +47,11 @@ public class Calculator {
     {
  	    int total = 0;
         int pos = 0;
-        for (String number : numbers)
+        for (String num : numbers)
         {
-            if (toInt(number) < 0)
+            int number = toInt(num);
+
+            if (number < 0)
             {
                 String msg = "Negatives not allowed: ";
                 for (int n = pos; n < numbers.length; n++)
@@ -61,7 +63,11 @@ public class Calculator {
                 }
                 throw new IllegalArgumentException(msg);
             }
-		    total += toInt(number);
+
+            if (number <= 1000)
+            {
+                total += number;
+            }
             pos++;
 		}
 		return total;
