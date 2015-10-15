@@ -69,4 +69,10 @@ public class CalculatorTest {
     {
         assertEquals(6, Calculator.add("//;;\n1;;2;;3"));
     }
+
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void testNegativeNumber()
+    {
+        assertEquals(0, Calculator.add("-6,6"));
+    }
 }
