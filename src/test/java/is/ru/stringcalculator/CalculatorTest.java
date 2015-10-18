@@ -76,10 +76,26 @@ public class CalculatorTest {
         assertEquals(6, Calculator.add("//[ppp]\n1ppp2ppp3"));
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testNegativeNumber()
     {
-        assertEquals(0, Calculator.add("-6,6"));
+        try {
+            assertEquals(0, Calculator.add("-6,6"));
+        }
+        catch (Exception e) {
+            assertEquals("Negatives not allowed: -6", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testNegativeNumbers()
+    {
+        try {
+            Calculator.add("-6,5,-4");
+        }
+        catch (Exception e) {
+            assertEquals("Negatives not allowed: -6,-4", e.getMessage());
+        }
     }
 
     @Test

@@ -16,22 +16,21 @@ public class Calculator {
             // Choosing delimiters
             if (text.contains("//") && text.indexOf("//") == 0)
             {
-                if (text.contains("//[")) {
+                if (text.contains("//["))
+                {
                     String delimiter = getDelimiters(text);
                     String numStr = text.substring(text.indexOf("]\n") + 2);
                     return sum(splitNumbers(numStr, delimiter));
                 }
-                else {
+                else
+                {
                     String delimiter = getDelimiter(text);
                     String numStr = text.substring(text.indexOf("\n") + 1);
                     return sum(splitNumbers(numStr, delimiter));
-                }
-                
+                } 
             }
-
 			return sum(splitNumbers(text));
 		}
-		
 		return toInt(text);
 	}
 
@@ -123,15 +122,16 @@ public class Calculator {
 
             if (number < 0)
             {
-                String msg = "Negatives not allowed: ";
-                for (int n = pos; n < numbers.length; n++)
+                StringBuilder msg = new StringBuilder("Negatives not allowed: " + number);
+
+                for (int n = pos+1; n < numbers.length; n++)
                 {
                     if (toInt(numbers[n]) < 0)
                     {
-                        msg = msg + numbers[n] + ",";
+                        msg.append("," + numbers[n]);
                     }
                 }
-                throw new IllegalArgumentException(msg);
+                throw new IllegalArgumentException(msg.toString());
             }
 
             if (number <= 1000)
