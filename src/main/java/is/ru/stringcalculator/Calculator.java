@@ -94,7 +94,7 @@ public class Calculator {
         return numbers.split("[(\n)|(,)]");
 	}
 
-    public static boolean isNumeric(String str)  
+    private static boolean isNumeric(String str)
     {  
         try {  
             double d = Double.parseDouble(str);  
